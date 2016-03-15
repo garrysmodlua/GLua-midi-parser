@@ -7,6 +7,9 @@ Works with Lua 5.0, also 5.3 (because it must be running on Stepmania...)
 ## Usage
 
 ```
+midiParser = require( "midi-parser" )
+-- or assert( loadfile( './midi-parser.lua' ) )()
+
 midi = midiParser( "path/to/midi.mid" )
 ```
 
