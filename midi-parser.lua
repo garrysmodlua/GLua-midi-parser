@@ -4,7 +4,10 @@ midi = midiParser( fileName[, path="DATA"] )
 
 -- EXAMPLE --
 myMidi = midiParser( "abcdef.mid" ) -- Will attempt to parse "garrysmod/data/abcdef.mid" file
-myMidi = midiParser( "test.mid", "LUA" ) -- Will attempt to parse "garrysmod/lua/test.mid" file
+
+testingMidi = midiParser( "test.mid", "LUA" ) -- Will attempt to parse "garrysmod/lua/test.mid" file
+
+PrintTable( testingMidi ) -- Prints the contents of testingMidi table
 -------------------------------------------------------------------------------------------------]]
 
 _G.midiParser = function( fileName, path )

@@ -1,21 +1,24 @@
 # MIDI Parser for Garry's Mod Lua
 
-**It is not perfect!!** Use it for just experiment.
+**It is not perfect**! Use it for just experiment.  
 This is a GLua fork of [Lua_midiParser](https://github.com/FMS-Cat/Lua_midiParser).
 
 ## Usage
 
 ```lua
 -- Will attempt to parse "garrysmod/data/abcdef.mid" file
-myMidi = midiParser( "abcdef.mid" )
+myMidi = midiParser( "abcdef.mid" ) -- if path is omitted, it defaults to "DATA"
 
 -- Will attempt to parse "garrysmod/lua/test.mid" file
 testingMidi = midiParser( "test.mid", "LUA" )
+
+-- Prints the contents of testingMidi table:
+PrintTable( testingMidi )
 ```
 
 ## Return sample
 
-```Lua
+```lua
 {
 	format = 1,
 	timebase = 96,
