@@ -11,7 +11,7 @@ You must download the source code first, there are 4 ways to do it, use any way 
 * Download the latest release from [here](https://github.com/garrysmodlua/GLua-midi-parser/releases/latest).  
 * Download ZIP of this repository [here](https://github.com/garrysmodlua/GLua-midi-parser/archive/master.zip).
 * Clone this repository using [git](https://git-scm.com/downloads): `git clone https://github.com/garrysmodlua/GLua-midi-parser.git midi-parser`.
-* Save the <code><a href="lua/includes/modules/midi-parser.lua">midi-parser.lua</a></code> file (Press <kbd>Ctrl</kbd>+<kbd>S</kbd>; Or, <kbd>Cmd</kbd>+<kbd>S</kbd> on Mac).
+* Save the <code><a href="https://raw.github.com/garrysmodlua/GLua-midi-parser/master/lua/includes/modules/midi-parser.lua">midi-parser.lua</a></code> file (Press <kbd>Ctrl</kbd>+<kbd>S</kbd>; Or, <kbd>Cmd</kbd>+<kbd>S</kbd> on Mac).
 
 ### GMod Setup
 
