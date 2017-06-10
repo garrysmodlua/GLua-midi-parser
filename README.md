@@ -16,7 +16,7 @@ You must download the source code first, there are 4 ways to do it, use any way 
 ### GMod Setup
 
 1. Navigate to your `./Steam/steamapps/common/GarrysMod/garrysmod` folder.
-2. Depending on which download method you have used, make sure you have the following directory structure (create any neccessary folder yourself if it doesn't exist):
+2. Depending on which download method you have used, make sure you have the following directory structure (create any necessary folder yourself if it doesn't exist):
 
 ![Expected directory structure](https://user-images.githubusercontent.com/9789070/27001572-ba3c1c16-4dcd-11e7-9348-a2954c8bd033.png)
 
