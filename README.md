@@ -1,6 +1,6 @@
 # MIDI Parser for Garry's Mod Lua
 
-[![Travis Build Status](https://img.shields.io/travis/garrysmodlua/GLua-midi-parser/master.svg?style=flat-square&maxAge=30)](https://travis-ci.org/garrysmodlua/GLua-midi-parser)
+[![MIT License](https://img.shields.io/github/license/garrysmodlua/GLua-midi-parser.svg?style=flat-square&maxAge=30)](https://github.com/garrysmodlua/GLua-midi-parser/blob/master/LICENSE) [![Travis Build Status](https://img.shields.io/travis/garrysmodlua/GLua-midi-parser/master.svg?style=flat-square&maxAge=30)](https://travis-ci.org/garrysmodlua/GLua-midi-parser)
 
 **It is not perfect**! Use it for experimental purposes.  
 This is a GLua fork of [Lua_midiParser](https://github.com/FMS-Cat/Lua_midiParser).
