@@ -1,9 +1,11 @@
--- Usage:
--- midi = midiParser( fileName[, path="DATA"] )
+--[[-----------------------------------------------------------------------------------------------
+-- USAGE --
+midi = midiParser( fileName[, path="DATA"] )
 
--- Example:
--- myMidi = midiParser( "abcdef.mid" ) -- Will attempt to parse "garrysmod/data/abcdef.mid" file
--- myMidi = midiParser( "test.mid", "LUA" ) -- Will attempt to parse "garrysmod/lua/test.mid" file
+-- EXAMPLE --
+myMidi = midiParser( "abcdef.mid" ) -- Will attempt to parse "garrysmod/data/abcdef.mid" file
+myMidi = midiParser( "test.mid", "LUA" ) -- Will attempt to parse "garrysmod/lua/test.mid" file
+-------------------------------------------------------------------------------------------------]]
 
 _G.midiParser = function( fileName, path )
 

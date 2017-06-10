@@ -7,10 +7,10 @@ This is a GLua fork of [Lua_midiParser](https://github.com/FMS-Cat/Lua_midiParse
 
 ```lua
 -- Will attempt to parse "garrysmod/data/abcdef.mid" file
--- myMidi = midiParser( "abcdef.mid" )
+myMidi = midiParser( "abcdef.mid" )
 
 -- Will attempt to parse "garrysmod/lua/test.mid" file
--- myMidi = midiParser( "test.mid", "LUA" )
+testingMidi = midiParser( "test.mid", "LUA" )
 ```
 
 ## Return sample
