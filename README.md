@@ -124,7 +124,7 @@ Sorry, there is no wiki nor docs...
 
 ## Contribution
 
-Visit the [Contributor Guidelines](https://github.com/garrysmodlua/GLua-midi-parser/blob/master/.github/CONTRIBUTING.md) for more details. All contributors are expected to follow our [Code of Conduct](https://github.com/garrysmodlua/GLua-midi-parser/master/.github/CODE_OF_CONDUCT.md).
+Visit the [Contributor Guidelines](https://github.com/garrysmodlua/GLua-midi-parser/blob/master/.github/CONTRIBUTING.md) for more details. All contributors are expected to follow our [Code of Conduct](https://github.com/garrysmodlua/GLua-midi-parser/blob/master/.github/CODE_OF_CONDUCT.md).
 
 ## Support
 
