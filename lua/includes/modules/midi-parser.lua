@@ -104,13 +104,13 @@ function Parse_Internal( midiData )
 	local ret = {}
 	local head = 1
 
-	if not isSameTable( byteArray( head, 4 ), { 77, 84, 104, 100 } ) then
+	if not isSameTable( byteArray( midiData, head, 4 ), { 77, 84, 104, 100 } ) then
 		error( "input data seems not to be valid MIDI data" )
 	end
 	head = head + 4 -- header chunk magic number
 	head = head + 4 -- header chunk length
 
-	ret.format = bytesToNumber( head, 2 )
+	ret.format = bytesToNumber( midiData, head, 2 )
 
 	if not ( ret.format == 0 or ret.format == 1 ) then
 		error( "not supported such format of MIDI" )
@@ -119,7 +119,7 @@ function Parse_Internal( midiData )
 
 	head = head + 2 -- trackCount
 
-	ret.timebase = bytesToNumber( head, 2 )
+	ret.timebase = bytesToNumber( midiData, head, 2 )
 	head = head + 2 -- timeBase
 
 	------------------------
@@ -129,13 +129,13 @@ function Parse_Internal( midiData )
 	ret.tracks = {}
 
 	while head < string.len( midiData ) do
-		if not isSameTable( byteArray( head, 4 ), { 77, 84, 114, 107 } ) then -- if chunk is not track chunk
+		if not isSameTable( byteArray( midiData, head, 4 ), { 77, 84, 114, 107 } ) then -- if chunk is not track chunk
 			head = head + 4 -- unknown chunk magic number
-			head = head + 4 + bytesToNumber( head, 4 ) -- chunk length + chunk data
+			head = head + 4 + bytesToNumber( midiData, head, 4 ) -- chunk length + chunk data
 		else
 			head = head + 4 -- track chunk magic number
 
-			local chunkLength = bytesToNumber( head, 4 )
+			local chunkLength = bytesToNumber( midiData, head, 4 )
 			head = head + 4 -- chunk length
 			local chunkStart = head
 
@@ -145,10 +145,10 @@ function Parse_Internal( midiData )
 
 			local status = 0
 			while head < chunkStart + chunkLength do
-				local deltaTime, deltaHead = vlq( head ) -- timing
+				local deltaTime, deltaHead = vlq( midiData, head ) -- timing
 				head = head + deltaHead
 
-				local tempStatus = byteArray( head, 1 )[ 1 ]
+				local tempStatus = byteArray( midiData, head, 1 )[ 1 ]
 
 				if math.floor( tempStatus / 128 ) == 1 then -- event, running status
 					head = head + 1
@@ -159,7 +159,7 @@ function Parse_Internal( midiData )
 				local channel = status - type * 16
 
 				if type == 8 then -- note off
-					local data = byteArray( head, 2 )
+					local data = byteArray( midiData, head, 2 )
 					head = head + 2
 
 					table.insert( track.messages, {
@@ -170,7 +170,7 @@ function Parse_Internal( midiData )
 						velocity = data[ 2 ]
 					} )
 				elseif type == 9 then -- note on
-					local data = byteArray( head, 2 )
+					local data = byteArray( midiData, head, 2 )
 					head = head + 2
 
 					table.insert( track.messages, {
@@ -191,9 +191,9 @@ function Parse_Internal( midiData )
 				elseif type == 14 then -- pitch bend
 					head = head + 2
 				elseif status == 255 then -- meta event
-					local metaType = byteArray( head, 1 )[ 1 ]
+					local metaType = byteArray( midiData, head, 1 )[ 1 ]
 					head = head + 1
-					local metaLength, metaHead = vlq( head )
+					local metaLength, metaHead = vlq( midiData, head )
 
 					if metaType == 3 then -- track name
 						head = head + metaHead
@@ -241,7 +241,7 @@ function Parse_Internal( midiData )
 					elseif metaType == 81 then -- tempo
 						head = head + 1
 
-						local micros = bytesToNumber( head, 3 )
+						local micros = bytesToNumber( midiData, head, 3 )
 						head = head + 3
 
 						table.insert( track.messages, {
@@ -253,7 +253,7 @@ function Parse_Internal( midiData )
 					elseif metaType == 88 then -- time signature
 						head = head + 1
 
-						local sig = byteArray( head, 4 )
+						local sig = byteArray( midiData, head, 4 )
 						head = head + 4
 
 						table.insert( track.messages, {
@@ -265,7 +265,7 @@ function Parse_Internal( midiData )
 					elseif metaType == 89 then -- key signature
 						head = head + 1
 
-						local sig = byteArray( head, 2 )
+						local sig = byteArray( midiData, head, 2 )
 						head = head + 2
 
 						table.insert( track.messages, {
@@ -294,7 +294,7 @@ function Parse_Internal( midiData )
 	return ret
 end
 
-function byteArray( _start, _length )
+function byteArray( midiData, _start, _length )
 	local retArray = {}
 	for i = 1, _length do
 		retArray[ i ] = string.byte( midiData, i + _start - 1 )
@@ -302,7 +302,7 @@ function byteArray( _start, _length )
 	return retArray
 end
 
-function bytesToNumber( _start, _length )
+function bytesToNumber( midiData, _start, _length )
 	local retNumber = 0
 	for i = 1, _length do
 		retNumber = retNumber + string.byte( midiData, i + _start - 1 ) * math.pow( 256, _length - i )
@@ -310,7 +310,7 @@ function bytesToNumber( _start, _length )
 	return retNumber
 end
 
-function vlq( _start ) -- Variable-length quantity
+function vlq( midiData, _start ) -- Variable-length quantity
 	local retNumber = 0
 	local head = 0
 	local byte = 0
