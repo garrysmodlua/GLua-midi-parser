@@ -271,7 +271,7 @@ _G.midiParser = function( fileName, path )
 						table.insert( track.messages, {
 							time = deltaTime,
 							type = 'meta',
-							meta = 'Unknown Text: ' .. event[ 2 ],
+							meta = 'Unknown Text',
 							text = text
 						} )
 
