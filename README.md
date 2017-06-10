@@ -1,16 +1,16 @@
-# midiParser for Lua
+# MIDI Parser for Garry's Mod Lua
 
 **It is not perfect!!** Use it for just experiment.
-
-Works with Lua 5.0, also 5.3 (because it must be running on Stepmania...)
+This is a GLua fork of [Lua_midiParser](https://github.com/FMS-Cat/Lua_midiParser).
 
 ## Usage
 
-```
-midiParser = require( "midi-parser" )
--- or assert( loadfile( './midi-parser.lua' ) )()
+```lua
+-- Will attempt to parse "garrysmod/data/abcdef.mid" file
+-- myMidi = midiParser( "abcdef.mid" )
 
-midi = midiParser( "path/to/midi.mid" )
+-- Will attempt to parse "garrysmod/lua/test.mid" file
+-- myMidi = midiParser( "test.mid", "LUA" )
 ```
 
 ## Return sample
