@@ -89,4 +89,4 @@ PrintTable( testingMidi )
 
 ## License
 
-MIT
+This repository is licensed with the [MIT](LICENSE) license.
